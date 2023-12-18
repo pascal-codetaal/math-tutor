@@ -2,9 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  background-color: #efefef;
+}
+.c-page {
+  scroll-behavior: smooth;
+
+  padding: 18px;
+  height: 1123px;
+  width: 794px;
+
+  padding-top: 24px;
+  background: white;
+
+  overflow: hidden;
+}
+
+.c-page--no-print {
+  position: relative;
+  box-shadow: 0 9px 20px -15px black;
+  margin-top: 19px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  outline: 1px dashed #777;
+
+  position: relative;
+  width: 50%;
+  padding-left: 48px;
+}
+
+.card .calculus {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@page {
+  /* // size: A4; */
+  margin: 0;
+}
+
 @media print {
-  .scale-down {
-    transform-origin: top left; /* Adjust as needed */
-    transform: scale(0.5); /* Scale down to 80% of the original size */
+  /* .scale-down {
+    transform-origin: top left; //* Adjust as needed 
+    transform: scale(0.5); //* Scale down to 80% of the original size
+  } */
+  html,
+  body {
+    /* // width: 210mm; */
+    width: 100%;
+    page-break-inside: avoid;
+    position: relative;
+    background-color: #fff;
+  }
+
+  .c-page {
+    height: auto;
+    min-height: 100%;
+    min-height: 296mm;
+    max-height: 296.5mm;
+
+    /* // border-bottom: 1px solid black; */
+  }
+
+  .c-page:nth-child(n + 2) {
+    counter-increment: page;
+  }
+
+  .c-page::after {
+    /* //content: counter(page);
+      //position:absolute;
+      //bottom: 55px;
+      //right: 103px; */
+  }
+  .c-page--no-print {
+    box-shadow: none;
+    margin: 0 auto;
+  }
+  .c-page-breaker {
+    width: 100%;
+    break-after: page;
   }
 }
