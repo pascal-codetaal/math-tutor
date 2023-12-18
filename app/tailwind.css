@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media print {
+  .scale-down {
+    transform-origin: top left; /* Adjust as needed */
+    transform: scale(0.5); /* Scale down to 80% of the original size */
+  }
+}
